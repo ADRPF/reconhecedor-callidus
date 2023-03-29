@@ -1,1 +1,2 @@
-backend/django/ValiFaceDB/ValiFaceDB/config.py
+backend/django/ValiFaceDB/ValiFaceDB/__pycache__
+backend/django/ValiFaceDB/ValiFaceDB/SecretKey.py
