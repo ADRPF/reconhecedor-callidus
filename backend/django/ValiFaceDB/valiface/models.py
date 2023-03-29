@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 
 class Gerente(models.Model):
-    login = models.CharField(max_lenght=50)
-    senha = models.CharField(max_lenght=50)
-    nome_geren = models.CharField(max_lenght=50)
+    login = models.CharField(max_length=50)
+    senha = models.CharField(max_length=50)
+    nome_geren = models.CharField(max_length=50)
     nível_acesso = models.IntegerField()
     foto_geren = models.ImageField()
 
@@ -15,11 +15,11 @@ class Gerente(models.Model):
     
 
 class Funcionario(models.Model):
-    nome_func = models.CharField(max_lenght=50)
+    nome_func = models.CharField(max_length=50)
     cargo_func = models.CharField(max_length=50)
     nível_acesso = models.IntegerField()
     foto_func = models.ImageField()
-    gerente_Id = models.ForeignKey(Gerente)
+    gerente_Id = models.ForeignKey(Gerente, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nome_func
@@ -34,7 +34,7 @@ class Ambiente(models.Model):
     
 
 class Acesso(models.Model):
-    id_func = models.ForeignKey(Funcionario)
-    id_amb = models.ForeignKey(Ambiente)
+    id_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+    id_amb = models.ForeignKey(Ambiente, on_delete=models.CASCADE)
     data_acesso = models.DateTimeField()
     resultado = models.BooleanField(default=False)
