@@ -33,7 +33,11 @@ class Cadastro(models.Model):
 
 class Categoria(models.Model):
     nome = models.CharField(max_length=50)
-    cor = models.
+    cor = models.CharField(max_length=7)
+
+    def __str__(self):
+        return self.nome
+ 
 
 class Licensa(models.Model):
     func_id = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
