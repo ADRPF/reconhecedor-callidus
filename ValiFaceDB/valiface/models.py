@@ -62,5 +62,5 @@ class Resultado(models.Model):
 class Acesso(models.Model):
     id_func = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)
     id_setor = models.ForeignKey(Setor, on_delete=models.DO_NOTHING)
-    data_acesso = models.DateTimeField()
     id_resultado = models.ForeignKey(Resultado, on_delete=models.DO_NOTHING)
+    data_acesso = models.DateTimeField()
