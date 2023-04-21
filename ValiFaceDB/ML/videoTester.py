@@ -17,8 +17,6 @@ while True:
     ret,test_img=cap.read()# captures frame and returns boolean value and captured image
     faces_detected,gray_img=fr.faceDetection(test_img)
 
-
-
     for (x,y,w,h) in faces_detected:
       cv2.rectangle(test_img,(x,y),(x+w,y+h),(255,0,0),thickness=7)
 
@@ -35,7 +33,7 @@ while True:
         print("label:",label)
         fr.draw_rect(test_img,face)
         predicted_name=name[label]
-        if confidence < 39:#If confidence less than 37 then don't print predicted face text on screen
+        if confidence < 37:#If confidence less than 37 then don't print predicted face text on screen
            fr.put_text(test_img,predicted_name,x,y)
     
     resized_img = cv2.resize(test_img, (1000, 700))
