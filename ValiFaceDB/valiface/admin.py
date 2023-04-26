@@ -6,7 +6,6 @@ import valiface.models
 admin.site.register(valiface.models.Agente)
 admin.site.register(valiface.models.Funcionario)
 admin.site.register(valiface.models.Setor)
-admin.site.register(valiface.models.Acesso)
 admin.site.register(valiface.models.Cadastro)
 admin.site.register(valiface.models.Categoria)
-admin.site.register(valiface.models.Licensa)
+admin.site.register(valiface.models.Licenca)

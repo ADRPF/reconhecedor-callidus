@@ -39,7 +39,7 @@ class Categoria(models.Model):
         return self.nome
  
 
-class Licensa(models.Model):
+class Licenca(models.Model):
     func_id = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
     categoria_id = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     data_ini = models.DateField()
@@ -60,7 +60,7 @@ class Resultado(models.Model):
         return self.tipo_resultado
 
 class Acesso(models.Model):
-    id_func = models.ForeignKey(Funcionario, on_delete=models.DO_NOTHING)
-    id_setor = models.ForeignKey(Setor, on_delete=models.DO_NOTHING)
-    id_resultado = models.ForeignKey(Resultado, on_delete=models.DO_NOTHING)
+    id_func = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
+    id_setor = models.ForeignKey(Setor, on_delete=models.CASCADE)
+    id_resultado = models.OneToOneField(Resultado, on_delete=models.CASCADE)
     data_acesso = models.DateTimeField()

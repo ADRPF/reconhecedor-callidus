@@ -23,7 +23,7 @@ name={0:"Priyanka",1:"Kangana",2:"Felipe"}#creating dictionary containing names 
 
 for face in faces_detected:
     (x,y,w,h)=face
-    roi_gray=gray_img[y:y+h,x:x+h]
+    roi_gray=gray_img[y:y+h,x:x+w]
     label,confidence=face_recognizer.predict(roi_gray) #predicting the label of given image
     print("confidence:",confidence)
     print("label:",label)
