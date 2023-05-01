@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Teste POST</title>
+        <style>
+            .mainDiv {
+                margin-left: 10%;
+                margin-top: 5%;
+            }
+            div{
+                margin-top: 5px;
+            }
+            ul {
+                padding-left: 0%;
+                list-style: none;
+            }
+            li {
+                margin-left: 0px;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="mainDiv">
+            <b>CADASTRAR FUNCIONÁRIO</b>
+            <form action="/display/" method="post">
+                {% csrf_token %}
+                <ul>
+                    <li>
+                        <label for="nome">nome:</label>
+                        <input type="text" name="nome" id="nome">
+                    </li>
+                    <li>
+                        <label for="cargo">cargo:</label>
+                        <input type="text" name="cargo" id="cargo">
+                    </li>
+
+                    <li>
+                        <input type="radio" name="perm" id="operario" value="Operario">
+                        <label for="operario">Operario</label>
+                    </li>
+
+                    <li>
+                        <input type="radio" name="perm" id="rh" value="RH">
+                        <label for="rh">RH</label>
+                    </li>
+
+                    <li>
+                        <input type="radio" name="perm" id="gerente" value="Gerente">
+                        <label for="gerente">Gerente</label>
+                    </li>
+
+                    <li>
+                        <input type="radio" name="perm" id="lider" value="Lider">
+                        <label for="lider">Líder</label>
+                    </li>
+                </ul>
+                <input type="submit" value="enviar!">
+            </form>
+        </div>
+    </body> 
+</html>

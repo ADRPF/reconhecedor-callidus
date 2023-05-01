@@ -18,5 +18,8 @@ from django.urls import path
 from valiface.views import *
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('', teste, name='base'),
+    path('create/', create_user, name='create user'),
+    path('display/', display, name='teste')
 ]
