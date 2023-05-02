@@ -8,6 +8,7 @@
             .mainDiv {
                 margin-left: 10%;
                 margin-top: 5%;
+                
             }
             div{
                 margin-top: 5px;
@@ -20,18 +21,24 @@
                 margin-left: 0px;
                 margin-top: 5px;
             }
+
+            body{
+                color: aquamarine;
+                background-color: gray;
+            }
         </style>
-        <script src="{% static 'teste.js' %}"></script>
+        <script src="{% static 'js/teste.js' %}"></script>
     </head>
     <body>
         <div class="mainDiv">
             <b>CADASTRAR FUNCIONÁRIO</b>
-            <form action="/display/" method="post">
+            <div class="display">
+                <video id="feed" autoplay></video>
+                <button onclick="takePicture()">tirar foto</button>
+                <canvas></canvas>
+            </div>
+            <form action="/create/" method="post">
                 {% csrf_token %}
-                
-                <div class="display">
-                    <video id="foto" autoplay></video>
-                </div>
                 <ul>
                     <li>
                         <label for="nome">nome:</label>
@@ -43,25 +50,26 @@
                     </li>
 
                     <li>
-                        <input type="radio" name="perm" id="operario" value="Operario">
+                        <input type="radio" name="perm" id="operario" value="0">
                         <label for="operario">Operario</label>
                     </li>
 
                     <li>
-                        <input type="radio" name="perm" id="rh" value="RH">
+                        <input type="radio" name="perm" id="rh" value="1">
                         <label for="rh">RH</label>
                     </li>
 
                     <li>
-                        <input type="radio" name="perm" id="gerente" value="Gerente">
+                        <input type="radio" name="perm" id="gerente" value="2">
                         <label for="gerente">Gerente</label>
                     </li>
 
                     <li>
-                        <input type="radio" name="perm" id="lider" value="Lider">
+                        <input type="radio" name="perm" id="lider" value="3">
                         <label for="lider">Líder</label>
                     </li>
                 </ul>
+                <input type="file">
                 <input type="submit" value="enviar!">
             </form>
         </div>
