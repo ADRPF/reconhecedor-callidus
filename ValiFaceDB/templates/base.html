@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -20,12 +21,17 @@
                 margin-top: 5px;
             }
         </style>
+        <script src="{% static 'teste.js' %}"></script>
     </head>
     <body>
         <div class="mainDiv">
             <b>CADASTRAR FUNCIONÁRIO</b>
             <form action="/display/" method="post">
                 {% csrf_token %}
+                
+                <div class="display">
+                    <video id="foto" autoplay></video>
+                </div>
                 <ul>
                     <li>
                         <label for="nome">nome:</label>

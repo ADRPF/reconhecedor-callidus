@@ -3,6 +3,8 @@ from django.conf import settings
 from django.http import JsonResponse, HttpResponse
 from valiface.models import *
 
+import cv2 as cv
+
 # Create your views here.
 
 BASE_DIR = getattr(settings, 'BASE_DIR')
@@ -18,4 +20,5 @@ def teste(request):
 def display(request):
     return HttpResponse(JsonResponse({'nome': request.POST['nome'],
                                       'cargo': request.POST['cargo'],
-                                      'perm': request.POST['perm']}))
+                                      'perm': request.POST['perm'],
+                                      'foto' : request.POST['foto']}))
