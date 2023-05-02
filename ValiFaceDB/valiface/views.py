@@ -10,7 +10,13 @@ import cv2 as cv
 BASE_DIR = getattr(settings, 'BASE_DIR')
 
 def create_user(request):
-    pass
+    if(int(request.POST['perm']) == 0):
+        func = Funcionario(nome_func=request.POST['nome'],
+                           cargo_func=request.POST['cargo'],
+                           foto_func=request.POST['foto'])
+    else:
+        pass
+    return HttpResponse("Funcionário cadastrado")
     
 def teste(request):
     return render(request,
