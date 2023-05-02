@@ -7,8 +7,12 @@ function startRecord(){
 
     navigator.mediaDevices.getUserMedia(constraints).then(stream=>{
         const videoElement = document.querySelector("#foto");
-        videoElement.srcObject = stream
+        videoElement.srcObject = stream;
+    }).catch(err =>{
+        console.log(err);
     })
+
+    
 
 }
 

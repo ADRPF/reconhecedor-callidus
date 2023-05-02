@@ -21,4 +21,4 @@ def display(request):
     return HttpResponse(JsonResponse({'nome': request.POST['nome'],
                                       'cargo': request.POST['cargo'],
                                       'perm': request.POST['perm'],
-                                      'foto' : request.POST['foto']}))
+                                      'foto' : request.POST['image']}))
