@@ -7,7 +7,6 @@ class Agente(models.Model):
     senha = models.CharField(max_length=50)
     nome_agent = models.CharField(max_length=50)
     permissao_agent = models.IntegerField()
-    nível_acesso_agent = models.IntegerField()
     foto_agent = models.ImageField()
 
     def __str__(self):
@@ -17,8 +16,6 @@ class Agente(models.Model):
 class Funcionario(models.Model):
     nome_func = models.CharField(max_length=50)
     cargo_func = models.CharField(max_length=50)
-    permissao_func = models.IntegerField()
-    nivel_acesso_func = models.IntegerField()
     foto_func = models.ImageField()
 
     def __str__(self):

@@ -3,4 +3,6 @@ ValiFaceDB/ValiFaceDB/SecretKey.py
 ValiFaceDB/valiface/__pycache__
 ValiFaceDB/valiface/migrations
 ValiFaceDB/ML/__pycache__
+ValiFaceDB/media
 
+ValiFaceDB/media/image.jpg

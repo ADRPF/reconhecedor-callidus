@@ -37,9 +37,12 @@
                 <button onclick="takePicture()">tirar foto</button>
                 <canvas></canvas>
             </div>
-            <form action="/create/" method="post">
+            <form action="/create/" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <ul>
+                    <li>
+                        <input type="file" id="foto" name="foto">
+                    </li>
                     <li>
                         <label for="nome">nome:</label>
                         <input type="text" name="nome" id="nome">
@@ -69,7 +72,6 @@
                         <label for="lider">Líder</label>
                     </li>
                 </ul>
-                <input type="file">
                 <input type="submit" value="enviar!">
             </form>
         </div>
