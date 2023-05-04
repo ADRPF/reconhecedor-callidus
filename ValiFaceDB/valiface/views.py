@@ -43,8 +43,8 @@ def predict_img(request):
                 response["id"]=func.pk
                 response["nome"]=func.nome_func
                 response["cargo"]=func.cargo_func
-        response["confiança"]=confidence
-    else:
-        print("Não encontrou no banco")
+        else:
+            print("Não encontrou no banco")
+        response["confiança"] = confidence
     
     return response
