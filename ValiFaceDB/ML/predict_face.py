@@ -1,9 +1,13 @@
 import cv2 as cv
+import os
 from faceRecognition import faceDetection
+from ValiFaceDB.settings import BASE_DIR
+
+PATH_TRAINING=os.path.join(BASE_DIR,"ML","trainingData.yml")
 
 def predict(img):
     LBPH_recognizer = cv.face.LBPHFaceRecognizer_create()
-    LBPH_recognizer.read("trainingData.yml")
+    LBPH_recognizer.read(PATH_TRAINING)
 
     faces_detected, gray_img = faceDetection(img)
     for face in faces_detected:
