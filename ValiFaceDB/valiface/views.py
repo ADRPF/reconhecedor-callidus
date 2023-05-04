@@ -1,50 +1,52 @@
 from django.shortcuts import render
-from django.conf import settings
 from django.http import JsonResponse, HttpResponse
 from valiface.models import *
-import cv2
-from ML import predict_face
+from PIL import Image
+from django.core.handlers.wsgi import WSGIRequest
 import numpy as np
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.views.decorators.csrf import csrf_exempt
-import cv2 as cv
+from ML.predict_face import predict
 
 # Create your views here.
 
-BASE_DIR = getattr(settings, 'BASE_DIR')
 
 def create_user(request):
     if request.method == 'POST':
-        if(int(request.POST['perm']) == 0):
+        if (int(request.POST['perm']) == 0):
             func = Funcionario(nome_func=request.POST['nome'],
-                            cargo_func=request.POST['cargo'],
-                            foto_func=request.FILES.get('foto', None))
+                               cargo_func=request.POST['cargo'],
+                               foto_func=request.FILES.get('foto', None))
             func.save()
         else:
             pass
     return HttpResponse("Funcionário cadastrado")
-    
+
 def teste(request):
     return render(request,
                   'base.html',
                   content_type='text/html')
 @csrf_exempt
-def predict_img(request):
-    response=JsonResponse({"id":-1,"nome":None,
-                           "cargo":None,"confiança":0.0})
-    img:InMemoryUploadedFile = request.FILES.get("img",None)
-    if str(request.method) == "POST" and img is not None:
-        image=cv2.imdecode(np.frombuffer(img.read(), np.uint8), cv2.IMREAD_UNCHANGED)
-        label, confidence = predict_face.predict(image)
-        if(label!=-1):
-            #Recupera o funcionário
-            func:Funcionario=Funcionario.objects.get(pk=label)
-            if(func!=None):
-                response["id"]=func.pk
-                response["nome"]=func.nome_func
-                response["cargo"]=func.cargo_func
-        response["confiança"]=confidence
-    else:
-        print("Não encontrou no banco")
-    
+def predict_img(request: WSGIRequest):
+    # ver se o método é o POST e se tem alguma imagem
+    response=JsonResponse({"id":-1,"nome":None,"cargo":None,"confiança":0.0})
+    imagem_em_memoria: InMemoryUploadedFile = request.FILES.get("img", None)
+    tipos_suportados=["image/jpeg","image/png","image/bmp"]
+    if request.method == "POST" and (imagem_em_memoria is not None) and (imagem_em_memoria.content_type in tipos_suportados):
+        # salva a imagem em um arquivo local
+        imagem = Image.open(imagem_em_memoria)
+        array_imagem=np.asarray(imagem)
+
+        if(predict(array_imagem)!=None):
+            # passa a imagem pra API de ML
+            label, confidence = predict(array_imagem)
+            if(label!=-1):
+                func:Funcionario=Funcionario.get(pk=label)
+                if(func!=None):
+                    response["id"]=func.pk
+                    response["nome"]=func.nome_func
+                    response["cargo"]=func.cargo_func
+            response["confianca"]=confidence
+    # Retorna o resultado da predição
+
     return response

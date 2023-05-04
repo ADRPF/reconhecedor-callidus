@@ -4,5 +4,7 @@ ValiFaceDB/valiface/__pycache__
 ValiFaceDB/valiface/migrations
 ValiFaceDB/ML/__pycache__
 ValiFaceDB/media
-
+ValiFaceDB/ValiFaceDB/__pycache__
 ValiFaceDB/media/image.jpg
+ValiFaceDB/ML/trainingImages/
+.idea
