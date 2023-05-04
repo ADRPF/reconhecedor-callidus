@@ -1,12 +1,11 @@
 import cv2
 import os
 import numpy as np
-from ValiFaceDB.settings import BASE_DIR
 #This module contains all common functions that are called in tester.py file
-
-
+from pathlib import Path
+PATH_HAARCASCADE=Path(__file__).resolve().parent
 #Given an image below function returns rectangle for face detected alongwith gray scale image
-PATH_HAARCASCADE = os.path.join(BASE_DIR,"ML","HaarCascade","haarcascade_frontalface_default.xml")
+PATH_HAARCASCADE = os.path.join(PATH_HAARCASCADE,"HaarCascade","haarcascade_frontalface_default.xml")
 def faceDetection(test_img):
     gray_img=cv2.cvtColor(test_img,cv2.COLOR_BGR2GRAY)#convert color image to grayscale
     face_haar_cascade=cv2.CascadeClassifier(PATH_HAARCASCADE)#Load haar classifier

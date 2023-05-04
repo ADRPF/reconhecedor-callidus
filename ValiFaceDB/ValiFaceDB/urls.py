@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', teste, name='base'),
     path('create/', create_user, name='create user'),
-    path('predict/',predict_img,name="predict_img")
+    path('predict/',predict_img)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

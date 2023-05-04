@@ -1,9 +1,11 @@
 import cv2 as cv
 import os
-from faceRecognition import faceDetection
-from ValiFaceDB.settings import BASE_DIR
+from .faceRecognition import faceDetection
+from pathlib import Path
 
-PATH_TRAINING=os.path.join(BASE_DIR,"ML","trainingData.yml")
+
+PATH_TRAINING=Path(__file__).resolve().parent
+PATH_TRAINING=os.path.join(PATH_TRAINING,"trainingData.yml")
 
 def predict(img):
     LBPH_recognizer = cv.face.LBPHFaceRecognizer_create()
@@ -13,7 +15,7 @@ def predict(img):
     for face in faces_detected:
         (x, y, w, h) = face
         roi = gray_img[y:y+h, x:x+w]
-        label, confidence = LBPH_recognizer.predict()
+        label, confidence = LBPH_recognizer.predict(gray_img)
         if confidence < 35:
             return label, confidence
         else:

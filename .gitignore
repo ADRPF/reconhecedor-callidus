@@ -7,3 +7,4 @@ ValiFaceDB/media
 ValiFaceDB/ValiFaceDB/__pycache__
 ValiFaceDB/media/image.jpg
 ValiFaceDB/ML/trainingImages/
+.idea
