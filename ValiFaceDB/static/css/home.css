@@ -1,0 +1,38 @@
+.nav-pills li a:hover {
+    background-color: #2EC896;
+}
+
+.custom-circle {
+    background-color: #141533;
+    border-top-right-radius: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+  .content {
+    margin-left: 40px;
+    padding: 30px;
+  }
+  
+  .content h1 {
+    font-size: 30px;
+  }
+  
+  .content form {
+    margin-top: 30px;
+  }
+  
+  .content label {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .content input[type="text"], .content textarea, .content input[type="file"] {
+    width: 70%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }

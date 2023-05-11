@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/ValiFaceDB/static/css/login_reset.css" type="text/css">
+    <title>Login - Callidus</title>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="image-container"></div>
+      <div class="form-container">
+        <img src="/ValiFaceDB/static/images/login_img2.png" width="200" height="90">
+        <br><br>
+          <form>
+            <div class="login-pass">
+              <input type="text" placeholder="Login" name="username" required />
+              <input type="password" placeholder="Senha" name="password" required />
+            </div>
+            <div>
+              <label><input type="checkbox"> Manter-me conectado</label><br>
+            </div>
+            <div class="forgot-login">
+              <a href="/ValiFaceDB/templates/reset_senha.html">Esqueceu a senha?</a>
+              <button type="submit" onclick="window.location.href ='home.html'">Entrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  </body>
+</html>
